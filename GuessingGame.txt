@@ -1,0 +1,50 @@
+import pygame
+
+pygame.init()
+
+screen = pygame.display.setmotion((640,640))
+import random
+
+print("Welcome to yobani guessing game")
+
+while True:
+     number = random.randint(1, 100)
+     
+     evil_number = number + random.choice ([-1,1])
+
+     guess = 0
+     guess_count = 0     
+     guess_limit = 10
+
+
+     while guess != number:
+          guess = int(input("Guess a number between 1 and 100:"))
+          guess_count += 1
+          if guess == evil_number:
+               print("You guesss the Evil number, That mean you LOSE!")
+               print("the real number was " + str(number) + "The evil number was " + str(evil_number))
+               break
+
+          if guess < number: 
+               print("Too low, try again")
+          elif guess > number:
+               print("too High, try again")
+          else: 
+               print(("Congratulations! You guessed the number!") + ("the number was ") + str(number) + (" and it took you ") + str(guess_count) + (" attempts to guess the number"))
+               break
+     
+          if guess_count >= guess_limit:
+               print("Sorry, you ran out of guesses. The number was " + str(number))
+               break
+         
+         
+     keep_playing = input("Do you want to play again? (yes/no): ")
+     if keep_playing.lower() != "yes":
+          print("Thank you for playing yobani guessing game, goodbye!")
+          break  
+
+
+
+
+                          
+                          
